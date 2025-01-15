@@ -19,6 +19,7 @@
                 |-- VerifyEmailController.php
             |-- Controller.php
             |-- ProfileController.php
+            |-- UserController.php
         |-- Requests
             |-- Auth
                 |-- LoginRequest.php
@@ -107,6 +108,8 @@
                 |-- delete-user-form.blade.php
                 |-- update-password-form.blade.php
                 |-- update-profile-information-form.blade.php
+        |-- users
+            |-- index.blade.php
         |-- welcome.blade.php
 |-- routes
     |-- auth.php
@@ -127,24 +130,41 @@
             |-- .gitignore
         |-- views
             |-- .gitignore
+            |-- 00ecc85a4f7130391bba3f71486846e7.php
             |-- 043ca307a28f4b1289ebbce955d6141e.php
+            |-- 17dc953223e58982510d354982701890.php
             |-- 19043a082e5b3e5d7fd93fa7d8e58102.php
             |-- 209901aff216447f8f32b6e8f5eb95ca.php
+            |-- 21f2c6e0a45fd188a1a2df8300e4b8b6.php
             |-- 29374b632e6ebc921d35888732a2ddd3.php
             |-- 3007db950e6bfb54edd1b93ab22414f6.php
             |-- 33055ab4db44be3ac9138f766c966746.php
+            |-- 3a2b08acf62b7552c21f248ff0d4d878.php
             |-- 3dff96a87fd2b783296218467f8c41f0.php
+            |-- 4a9e088b0452f96ae1c4fa67c277c017.php
             |-- 51e864bfff8c8d4965990abee499fd16.php
+            |-- 5b1a5ffbefff1f924470dbc8461d06f7.php
+            |-- 5c0d0ac1622ba5fdf7f01d845f61a236.php
+            |-- 5c238636442f2a47df1e964e896cdd78.php
+            |-- 5f37d10aae22a77dab6d9b4b6fa9cb3e.php
+            |-- 60164441436c7de7fbb19d3bf6c43da2.php
+            |-- 655fb5e82d186c64205af0f73c8d1ed2.php
+            |-- 6f99243598bd461ec12e91d3555f9381.php
             |-- 73e4f1e6a653ccabd84759bb9612d742.php
+            |-- 837eb255ad3d558311483fd0abd7e796.php
+            |-- 86fb21a109a3537f120c3eeb5d5c62a2.php
+            |-- 8cc227cac26e084c080b662c465a5bc4.php
             |-- 912ad78d83e8bbb2265087254b1f9048.php
             |-- a0ecdb40559297a8a046d6103656cfd1.php
             |-- af67d8d2211f629ecb0649109ecc2520.php
+            |-- b8113fa74a3933270a67cebc736a3db2.php
+            |-- d150c50e6a66e3a5ca9ad272caff1807.php
             |-- da7e7f97fc26fe9d9d739fff764f0586.php
             |-- edb319a15a240add9fcdc911d051cac9.php
             |-- ef6ae5277faea55f1b1809087a1dfb33.php
     |-- pail
         |-- .gitignore
-        |-- 6786681bb05b5.pail
+        |-- 67875375be874.pail
 |-- tailwind.config.js
 |-- tests
     |-- Feature
