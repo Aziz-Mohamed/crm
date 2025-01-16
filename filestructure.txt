@@ -17,17 +17,25 @@
                 |-- PasswordResetLinkController.php
                 |-- RegisteredUserController.php
                 |-- VerifyEmailController.php
+            |-- ClientController.php
             |-- Controller.php
             |-- ProfileController.php
             |-- UserController.php
         |-- Requests
             |-- Auth
                 |-- LoginRequest.php
+            |-- ClientRequest.php
             |-- ProfileUpdateRequest.php
+            |-- StoreClientRequest.php
+            |-- StoreUserRequest.php
+            |-- UpdateClientRequest.php
+            |-- UpdateUserRequest.php
     |-- Models
+        |-- Client.php
         |-- User.php
     |-- Providers
         |-- AppServiceProvider.php
+    |-- RoleEnum.php
     |-- View
         |-- Components
             |-- AppLayout.php
@@ -46,19 +54,26 @@
     |-- filesystems.php
     |-- logging.php
     |-- mail.php
+    |-- permission.php
     |-- queue.php
     |-- services.php
     |-- session.php
 |-- database
     |-- .gitignore
     |-- factories
+        |-- ClientFactory.php
         |-- UserFactory.php
     |-- migrations
         |-- 0001_01_01_000000_create_users_table.php
         |-- 0001_01_01_000001_create_cache_table.php
         |-- 0001_01_01_000002_create_jobs_table.php
+        |-- 2025_01_15_153405_create_permission_tables.php
+        |-- 2025_01_16_102659_create_clients_table.php
     |-- seeders
+        |-- ClientSeeder.php
         |-- DatabaseSeeder.php
+        |-- RoleSeeder.php
+        |-- UserSeeder.php
 |-- package-lock.json
 |-- package.json
 |-- phpunit.xml
@@ -83,6 +98,9 @@
             |-- register.blade.php
             |-- reset-password.blade.php
             |-- verify-email.blade.php
+        |-- clients
+            |-- create.blade.php
+            |-- index.blade.php
         |-- components
             |-- application-logo.blade.php
             |-- auth-session-status.blade.php
@@ -109,6 +127,8 @@
                 |-- update-password-form.blade.php
                 |-- update-profile-information-form.blade.php
         |-- users
+            |-- create.blade.php
+            |-- edit.blade.php
             |-- index.blade.php
         |-- welcome.blade.php
 |-- routes
@@ -134,6 +154,7 @@
             |-- 043ca307a28f4b1289ebbce955d6141e.php
             |-- 17dc953223e58982510d354982701890.php
             |-- 19043a082e5b3e5d7fd93fa7d8e58102.php
+            |-- 1ca2e716d50478dec506d6e719a91471.php
             |-- 209901aff216447f8f32b6e8f5eb95ca.php
             |-- 21f2c6e0a45fd188a1a2df8300e4b8b6.php
             |-- 29374b632e6ebc921d35888732a2ddd3.php
@@ -151,20 +172,26 @@
             |-- 655fb5e82d186c64205af0f73c8d1ed2.php
             |-- 6f99243598bd461ec12e91d3555f9381.php
             |-- 73e4f1e6a653ccabd84759bb9612d742.php
+            |-- 779696d77a20d571242b50c8a36e7cb5.php
+            |-- 805867d66f5c050ce58fcc4ef93e9f24.php
             |-- 837eb255ad3d558311483fd0abd7e796.php
             |-- 86fb21a109a3537f120c3eeb5d5c62a2.php
             |-- 8cc227cac26e084c080b662c465a5bc4.php
             |-- 912ad78d83e8bbb2265087254b1f9048.php
+            |-- 93d1b7a5809268b5ce8302b31fe5d399.php
+            |-- 9920984d8d055bae2e446bbf0c5b59ac.php
+            |-- 9ae9173769eca521451120bedcf1f798.php
             |-- a0ecdb40559297a8a046d6103656cfd1.php
             |-- af67d8d2211f629ecb0649109ecc2520.php
             |-- b8113fa74a3933270a67cebc736a3db2.php
+            |-- b8c0002441d4dca913a52c9c2a51a62b.php
+            |-- ce197903bf18bba36990a658fe870c03.php
             |-- d150c50e6a66e3a5ca9ad272caff1807.php
             |-- da7e7f97fc26fe9d9d739fff764f0586.php
             |-- edb319a15a240add9fcdc911d051cac9.php
             |-- ef6ae5277faea55f1b1809087a1dfb33.php
     |-- pail
         |-- .gitignore
-        |-- 67875375be874.pail
 |-- tailwind.config.js
 |-- tests
     |-- Feature
@@ -9337,6 +9364,55 @@
             |-- composer.json
             |-- src
                 |-- Version.php
+    |-- spatie
+        |-- laravel-permission
+            |-- LICENSE.md
+            |-- README.md
+            |-- composer.json
+            |-- config
+                |-- permission.php
+            |-- database
+                |-- migrations
+                    |-- add_teams_fields.php.stub
+                    |-- create_permission_tables.php.stub
+            |-- ide.json
+            |-- src
+                |-- Commands
+                    |-- CacheReset.php
+                    |-- CreatePermission.php
+                    |-- CreateRole.php
+                    |-- Show.php
+                    |-- UpgradeForTeams.php
+                |-- Contracts
+                    |-- Permission.php
+                    |-- Role.php
+                    |-- Wildcard.php
+                |-- Exceptions
+                    |-- GuardDoesNotMatch.php
+                    |-- PermissionAlreadyExists.php
+                    |-- PermissionDoesNotExist.php
+                    |-- RoleAlreadyExists.php
+                    |-- RoleDoesNotExist.php
+                    |-- UnauthorizedException.php
+                    |-- WildcardPermissionInvalidArgument.php
+                    |-- WildcardPermissionNotImplementsContract.php
+                    |-- WildcardPermissionNotProperlyFormatted.php
+                |-- Guard.php
+                |-- Middleware
+                    |-- PermissionMiddleware.php
+                    |-- RoleMiddleware.php
+                    |-- RoleOrPermissionMiddleware.php
+                |-- Models
+                    |-- Permission.php
+                    |-- Role.php
+                |-- PermissionRegistrar.php
+                |-- PermissionServiceProvider.php
+                |-- Traits
+                    |-- HasPermissions.php
+                    |-- HasRoles.php
+                    |-- RefreshesPermissionCache.php
+                |-- WildcardPermission.php
+                |-- helpers.php
     |-- staabm
         |-- side-effects-detector
             |-- LICENSE
