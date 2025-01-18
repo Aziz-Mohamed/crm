@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 use App\Models\Client;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::paginate(20);
+        $clients = Client::orderBy('created_at', 'desc')->paginate(20);
         return view('clients.index', compact('clients'));
     }
 
@@ -22,13 +23,13 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view(view: 'clients.create');
+        return view( 'clients.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UpdateClientRequest $request)
+    public function store(StoreClientRequest $request)
     {
         Client::create($request->validated());
         return redirect()->route('clients.index');
@@ -45,15 +46,15 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Client $client)
     {
-        //
+        return view('clients.edit', compact('client'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateClientRequest $request,Client $client,  string $id)
+    public function update(UpdateClientRequest $request,Client $client)
     {
         $client->update($request->validated());
         return redirect()->route('clients.index');
@@ -62,7 +63,7 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Client $client, string $id)
+    public function destroy(Client $client)
     {
         $client-> delete();
         return redirect()->route('clients.index');

@@ -5,6 +5,8 @@
 |-- .gitignore
 |-- README.md
 |-- app
+    |-- Enums
+        |-- ProjectStatus.php
     |-- Http
         |-- Controllers
             |-- Auth
@@ -20,6 +22,7 @@
             |-- ClientController.php
             |-- Controller.php
             |-- ProfileController.php
+            |-- ProjectController.php
             |-- UserController.php
         |-- Requests
             |-- Auth
@@ -27,11 +30,14 @@
             |-- ClientRequest.php
             |-- ProfileUpdateRequest.php
             |-- StoreClientRequest.php
+            |-- StoreProjectRequest.php
             |-- StoreUserRequest.php
             |-- UpdateClientRequest.php
+            |-- UpdateProjectRequest.php
             |-- UpdateUserRequest.php
     |-- Models
         |-- Client.php
+        |-- Project.php
         |-- User.php
     |-- Providers
         |-- AppServiceProvider.php
@@ -62,6 +68,7 @@
     |-- .gitignore
     |-- factories
         |-- ClientFactory.php
+        |-- ProjectFactory.php
         |-- UserFactory.php
     |-- migrations
         |-- 0001_01_01_000000_create_users_table.php
@@ -69,9 +76,11 @@
         |-- 0001_01_01_000002_create_jobs_table.php
         |-- 2025_01_15_153405_create_permission_tables.php
         |-- 2025_01_16_102659_create_clients_table.php
+        |-- 2025_01_17_180749_create_projects_table.php
     |-- seeders
         |-- ClientSeeder.php
         |-- DatabaseSeeder.php
+        |-- ProjectSeeder.php
         |-- RoleSeeder.php
         |-- UserSeeder.php
 |-- package-lock.json
@@ -100,6 +109,7 @@
             |-- verify-email.blade.php
         |-- clients
             |-- create.blade.php
+            |-- edit.blade.php
             |-- index.blade.php
         |-- components
             |-- application-logo.blade.php
@@ -126,6 +136,10 @@
                 |-- delete-user-form.blade.php
                 |-- update-password-form.blade.php
                 |-- update-profile-information-form.blade.php
+        |-- projects
+            |-- create.blade.php
+            |-- edit.blade.php
+            |-- index.blade.php
         |-- users
             |-- create.blade.php
             |-- edit.blade.php
@@ -152,6 +166,7 @@
             |-- .gitignore
             |-- 00ecc85a4f7130391bba3f71486846e7.php
             |-- 043ca307a28f4b1289ebbce955d6141e.php
+            |-- 0924d677602acae9bea788ecbc863160.php
             |-- 17dc953223e58982510d354982701890.php
             |-- 19043a082e5b3e5d7fd93fa7d8e58102.php
             |-- 1ca2e716d50478dec506d6e719a91471.php
@@ -163,6 +178,8 @@
             |-- 3a2b08acf62b7552c21f248ff0d4d878.php
             |-- 3dff96a87fd2b783296218467f8c41f0.php
             |-- 4a9e088b0452f96ae1c4fa67c277c017.php
+            |-- 4af392d7a9684dd49690d0494f62a539.php
+            |-- 4fbeea6488c40eec7bde885a74b7302e.php
             |-- 51e864bfff8c8d4965990abee499fd16.php
             |-- 5b1a5ffbefff1f924470dbc8461d06f7.php
             |-- 5c0d0ac1622ba5fdf7f01d845f61a236.php
@@ -171,6 +188,7 @@
             |-- 60164441436c7de7fbb19d3bf6c43da2.php
             |-- 655fb5e82d186c64205af0f73c8d1ed2.php
             |-- 6f99243598bd461ec12e91d3555f9381.php
+            |-- 70f28479f202973390e910d18e16377b.php
             |-- 73e4f1e6a653ccabd84759bb9612d742.php
             |-- 779696d77a20d571242b50c8a36e7cb5.php
             |-- 805867d66f5c050ce58fcc4ef93e9f24.php
@@ -180,8 +198,10 @@
             |-- 912ad78d83e8bbb2265087254b1f9048.php
             |-- 93d1b7a5809268b5ce8302b31fe5d399.php
             |-- 9920984d8d055bae2e446bbf0c5b59ac.php
+            |-- 999526d40d1e05895c2c48868e81fd7b.php
             |-- 9ae9173769eca521451120bedcf1f798.php
             |-- a0ecdb40559297a8a046d6103656cfd1.php
+            |-- ae742ca573d862bd3c1d34d80593fc82.php
             |-- af67d8d2211f629ecb0649109ecc2520.php
             |-- b8113fa74a3933270a67cebc736a3db2.php
             |-- b8c0002441d4dca913a52c9c2a51a62b.php

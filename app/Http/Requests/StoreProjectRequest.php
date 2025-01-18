@@ -2,10 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\ProjectStatus;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreClientRequest extends FormRequest
+class StoreProjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,14 +24,12 @@ class StoreClientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'contact_name' => ['required','string','max:255'],
-            'contact_email' => ['required','email','max:255', Rule::unique('clients', 'contact_email')],
-            'contact_phone_number' => ['required'],
-            'company_name' => ['required'],
-            'company_address' => ['required'],
-            'company_city' => ['required','string'],
-            'company_zip' => ['required','integer'],
-            'company_vat' => ['required', 'numeric'],
+            'title'=> ['required'],
+            'description'=> ['required'],
+            'user_id'=>['required', Rule::exists('users', 'id')],
+            'deadline_at'=>['required', 'date'],
+            'client_id'=>['required', Rule::exists('clients','id')],
+            'status'=>['required', Rule::enum(ProjectStatus::class)],
         ];
     }
 }
